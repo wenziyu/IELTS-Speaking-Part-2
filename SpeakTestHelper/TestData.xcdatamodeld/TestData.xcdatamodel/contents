@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Testdata" representedClassName="Testdata" syncable="YES" codeGenerationType="class">
+        <attribute name="createtime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="question" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="qustopic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="voice_audio" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Testdata" positionX="-63" positionY="-18" width="128" height="105"/>
+    </elements>
+</model>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Question_3</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Work and Studies</string>
+			<key>Question</key>
+			<string>Talk about a job you have done or know about</string>
+			<key>Hint</key>
+			<string>What people do in that job?&amp;What kind of place they work in?&amp;What clothes and equipment they need?&amp;And say if you think it is a satisfying job to do or not, and why.</string>
+		</dict>
+		<key>Question_2</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Work and Studies</string>
+			<key>Question</key>
+			<string>Describe a classroom that you study or have studied in.</string>
+			<key>Hint</key>
+			<string>What part of the school or college it is in?&amp;What it looks like?&amp;What things are in it?&amp;And say if you think the people who study there like it or not, and why.</string>
+		</dict>
+		<key>Question_1</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Work and Studies</string>
+			<key>Question</key>
+			<string>Talk about something you use to help you in your work or studies.</string>
+			<key>Hint</key>
+			<string>What it looks like?&amp;What it does?&amp;How often you use this thing?&amp;And say what you would do if you could not use this object. </string>
+		</dict>
+	</dict>
+	<dict>
+		<key>Question_1</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Sports, hobbies and free time</string>
+			<key>Question</key>
+			<string>Talk about a book you are reading now or have read recently</string>
+			<key>Hint</key>
+			<string>How and why you got it?&amp;How long you it took you to read it or how long you have been reading it?&amp;What kind of book it is?&amp;And say if you would like to read something else similar or not, and why.</string>
+		</dict>
+		<key>Question_2</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Sports, hobbies and free time</string>
+			<key>Question</key>
+			<string>Talk about a sport you like doing or watching</string>
+			<key>Hint</key>
+			<string>How you first became interested in it?&amp;Why you are interested in it?&amp;What equipment and skills are needed?&amp;And say if you think it is an easy sport to do or not, and why.</string>
+		</dict>
+	</dict>
+	<dict>
+		<key>Question_1</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Family, friends and pets</string>
+			<key>Question</key>
+			<string>Describe a friend that you often spend time with</string>
+			<key>Hint</key>
+			<string>How often you see this friend?&amp;Where you usually go together?&amp;What things you do together?&amp;And say why you like spending time with this person. </string>
+		</dict>
+		<key>Question_2</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Family, friends and pets</string>
+			<key>Question</key>
+			<string>Describe one of your relatives</string>
+			<key>Hint</key>
+			<string> What that person looks like?&amp;What that person’s character is like?&amp;What they are doing at the moment?&amp;And say which other relative of yours they are most similar to?</string>
+		</dict>
+	</dict>
+</array>
+</plist>
