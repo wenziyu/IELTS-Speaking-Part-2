@@ -11,7 +11,7 @@
 #import "TestData+CoreDataModel.h"
 
 @interface TabBarVC : UITabBarController
-{
-    CoreDataManager<Testdata*> * dataManager;
-}
+
++(instancetype)shared;
+@property (nonatomic,strong)CoreDataManager<Testdata*> * dataManager;
 @end

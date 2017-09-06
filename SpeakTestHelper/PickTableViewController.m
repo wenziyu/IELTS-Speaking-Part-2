@@ -32,10 +32,14 @@
         [stateArray addObject:@"0"];
     }
     
+    UIImage * image = [UIImage imageNamed:@"back"];
+    UIBarButtonItem * backButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackBtnTap)];
+    self.navigationItem.leftBarButtonItem = backButton;
+
     
 }
 -(void)initTable{
-    expandTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    expandTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height - 110) style:UITableViewStylePlain];
     expandTable.dataSource = self;
     expandTable.delegate =  self;
     expandTable.tableFooterView = [UIView new];
@@ -87,7 +91,7 @@
     testVC.quesDic = [self questionDic:indexPath];
     
 //    [self presentViewController:testVC animated:YES completion:nil];
-    
+    testVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:testVC animated:YES];
     
 }
@@ -115,7 +119,7 @@
     [button addSubview:line];
     
     // 前面圖案裝飾
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(10, (kCell_Height-22)/2, 22, 22)];
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(10, (kCell_Height-18)/2, 18, 18)];
     [imgView setImage:[UIImage imageNamed:@"ico_faq_d"]];
     [button addSubview:imgView];
     
@@ -130,6 +134,7 @@
     [button addSubview:_imgView];
     
     UILabel *tlabel = [[UILabel alloc]initWithFrame:CGRectMake(45, (kCell_Height-20)/2, 200, 20)];
+    
     [tlabel setBackgroundColor:[UIColor clearColor]];
     [tlabel setFont:[UIFont systemFontOfSize:14]];
     [tlabel setText:[self sectionTitle:section]];
@@ -182,7 +187,14 @@
             break;
     }
 }
+-(void)navigationBackBtnTap{
+    NSLog(@"navigationBackBtnTap");
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
+-(void)viewWillAppear:(BOOL)animated {
+    self.navigationItem.title = @"Question List";
+}
 
 
 @end

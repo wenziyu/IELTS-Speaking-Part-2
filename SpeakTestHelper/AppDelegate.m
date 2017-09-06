@@ -16,7 +16,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    UIImage* tabBarBackground = [UIImage imageNamed:@"BarColor"];
+    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
+
+    [[UINavigationBar appearance]setBackgroundImage:tabBarBackground forBarMetrics:UIBarMetricsDefault];
+
     return YES;
 }
 

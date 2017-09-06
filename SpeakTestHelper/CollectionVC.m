@@ -11,10 +11,11 @@
 #import "TestData+CoreDataModel.h"
 #import "CollectionCell.h"
 #import "CollectionDetailVC.h"
+#import "TabBarVC.h"
 
 @interface CollectionVC ()<UITableViewDelegate,UITableViewDataSource>
 {
-    CoreDataManager<Testdata*> * dataManager;
+    TabBarVC * tabrVC;
     NSInteger dataCount;
 }
 @end
@@ -23,8 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    dataManager = [[CoreDataManager alloc]initWithModel:@"TestData" dbFileNAme:@"test.sqlite" dbPathURL:nil sortKey:@"createtime" entityName:@"Testdata"];
-    dataCount = [dataManager count];
+    
+    NSLog(@"did %ld",(long)dataCount);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +41,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    Testdata * item = [dataManager itemWithIndex:indexPath.row];
+    Testdata * item = [tabrVC.dataManager itemWithIndex:indexPath.row];
     cell.lblTitle.text = item.question;
     NSDate * date = item.createtime;
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
@@ -53,9 +54,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     CollectionDetailVC * collectionDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CollectionDetailVC"];
-    Testdata * item = [dataManager itemWithIndex:indexPath.row];
+    Testdata * item = [tabrVC.dataManager itemWithIndex:indexPath.row];
     NSDate * date = item.createtime;
+    NSString * file = item.voice_audio;
     collectionDetailVC.date = date;
+    collectionDetailVC.fileName = file;
 
     [self.navigationController pushViewController:collectionDetailVC animated:YES];
 }
@@ -67,15 +70,13 @@
     return UITableViewAutomaticDimension;
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [self.tabBarController.tabBar setHidden:NO];
+    tabrVC = [TabBarVC shared];
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    dataCount = [tabrVC.dataManager count];
+    [self.myTableView reloadData];
+    NSLog(@"will %ld",(long)dataCount);
 }
-*/
 
 @end

@@ -16,12 +16,19 @@
 {
     AVAudioRecorder *voiceRecorder;
     AVAudioPlayer *voicePlayer;
-    CoreDataManager<Testdata*> * dataManager;
-    
+    TabBarVC * tabrVC;
 }
-@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *digitViews;
+
+// 一分鐘倒數
 @property (nonatomic,assign) int totalSeconds;
-@property (nonatomic,assign)NSTimer * oneMinTimer;
+@property (nonatomic,weak)NSTimer * oneMinTimer;
+
+// 兩分鐘計時
+@property (nonatomic,weak)NSTimer * twoMinTimer;
+@property (nonatomic,assign) int twoMinSeconds;
+
+@property (nonatomic,weak)NSTimer * audioTimer;
+@property (nonatomic,assign) int audioSeconds;
 
 @property (weak, nonatomic) IBOutlet UILabel *QusLabel;
 @property (weak, nonatomic) IBOutlet UITextView *hintTextView;
@@ -30,6 +37,15 @@
 @property (nonatomic, assign)BOOL started;
 @property (nonatomic,assign) NSString * videoFilePath;
 @property (nonatomic, assign)BOOL save;
+@property (nonatomic, assign) float proValue;
+@property (nonatomic,assign) NSTimeInterval audioDuration;
+@property (nonatomic,assign) BOOL again;
+@property (nonatomic,assign) BOOL nevercome;
+@property (nonatomic,assign) BOOL play;
+@property (nonatomic,assign) BOOL isDraggingTimeSlider;
+- (IBAction)sliderTouchDown:(id)sender;
+- (IBAction)sliderValueChanged:(id)sender;
+- (IBAction)sliderTouchUpInside:(id)sender;
 
 @end
 
@@ -38,20 +54,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    dataManager = [[CoreDataManager alloc]initWithModel:@"TestData" dbFileNAme:@"test.sqlite" dbPathURL:nil sortKey:@"createtime" entityName:@"Testdata"];
-    
-    
-    
+    tabrVC = [TabBarVC shared];
+    self.QusLabel.numberOfLines = 0;
+    // 題目 label
     self.QusLabel.text = self.quesDic[@"Question"];
     NSString * replaceHint = [self.quesDic[@"Hint"] stringByReplacingOccurrencesOfString:@"&" withString:@"\n"];
     self.hintTextView.text = replaceHint;
     self.topicLabel.text = self.quesDic[@"QusTopic"];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.hintTextView.layoutManager.allowsNonContiguousLayout = NO;
+    
+    self.playContentView.hidden = true;
     self.started = false;
     self.save = false;
-    self.playVoiceBtn.hidden = true;
-    self.saveBtn.hidden = true;
+    self.nevercome = true;
+    self.play = false;
+    self.twoMinSeconds = 1;
+    self.isDraggingTimeSlider = false;
+    self.audioProgressBar.progress = 0;
+    self.audioProgressBar.hidden = true;
+    self.countContentView.hidden = true;
+    self.progressSlider.hidden = true;
     
+    [self fontFamily];
+    
+
+    UIImage * image = [UIImage imageNamed:@"back"];
+    UIBarButtonItem * backButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackBtnTap)];
+    self.navigationItem.leftBarButtonItem = backButton;
+    
+    // requestRecordPermission
     AVAudioSession *instance=[AVAudioSession sharedInstance];
     if([instance respondsToSelector:@selector(requestRecordPermission:)]){
         [instance requestRecordPermission:^(BOOL granted) {
@@ -63,130 +95,238 @@
             }else{
                 message=@"User did not grant the permission.";
             }
-            
-//            UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction * ok = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];
-//        
-//            [alert addAction:ok];
-//            [self presentViewController:alert animated:YES completion:nil];
-//            
-            }];
+        }];
     }
+    
+    // 一分鐘倒數的timer
+    [self oneMinTimerCount];
 
-    [NSTimer scheduledTimerWithTimeInterval:60 repeats:false block:^(NSTimer * _Nonnull timer) {
-        if (self.started == false){
-            [self prepareRecording];
-            [voiceRecorder recordForDuration:120];
-            self.startRecordBtn.hidden = true;
-        }
-    }];
-    for (UIView *view in _digitViews)
-    {
-        UIImage *image = [UIImage imageNamed:@"11.jpg"];
-        view.layer.contents = (__bridge id _Nullable)(image.CGImage);
-        view.layer.contentsRect = CGRectMake(0, 0, 0.1, 1);
+}
+
+#pragma mark - two minute count method
+-(void)twoMinuteTimer {
+    self.twoMinSeconds = 1;
+    self.audioProgressBar.progress = 0.0;
+    self.proValue = 0;
+    self.twoMinTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countTime) userInfo:nil repeats:YES];
+
+}
+-(void)countTime {
+    NSLog(@"%f",self.audioProgressBar.progress);
+    self.twoMinSeconds ++;
+    
+    self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.twoMinSeconds]];
+    self.setTime.text = [NSString stringWithFormat:@"%@",[self formatTime:120]];
+    
+    // 1 / 120 = 0.0083333333 一秒跑這樣
+    self.proValue += 0.00833;
+    self.audioProgressBar.progress = self.proValue;
+    
+    // 兩分鐘到了自動停止
+    if (self.twoMinSeconds == 120){
+        [self.twoMinTimer invalidate];
+        // 顯示為02:00/02:00
+        self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:120]];
+        self.setTime.text = [NSString stringWithFormat:@"%@",[self formatTime:120]];
+        self.playContentView.hidden = false;
+        self.startRecordBtn.hidden = true;
+        self.audioProgressBar.progress = 1;
+        [self prepreAudioPath];
     }
+   
+
+}
+- (NSString *)formatTime:(int)num{
+    int sec = num % 60;
+    int min = num / 60;
+    return [NSString stringWithFormat:@"%02d:%02d",min,sec];
+}
+
+#pragma mark - one minute count method
+- (void)oneMinTimerCount {
     self.totalSeconds = 60;
     self.oneMinTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
-    [self tick];
 }
--(void)tick{
-       self.totalSeconds --;
-    [self setDigit:self.totalSeconds / 10 forView:self.digitViews[0]];
-    [self setDigit:self.totalSeconds % 10 forView:self.digitViews[1]];
+-(void)tick {
+    
+    self.totalSeconds --;
+    self.countLabel.text = [NSString stringWithFormat:@"%d",self.totalSeconds / 10];
+    self.countLabelTwo.text = [NSString stringWithFormat:@"%d",self.totalSeconds % 10];
     
     if ( self.totalSeconds == 0 ) {
         
         [self.oneMinTimer invalidate];
-        [self setDigit:0 forView:self.digitViews[0]];
-        [self setDigit:0 forView:self.digitViews[1]];
+        [self prepareRecording];
+        [voiceRecorder recordForDuration:120];
+        self.started = true;
+        [self.startRecordBtn setImage:[UIImage imageNamed:@"stopRecord"] forState:UIControlStateNormal];
+        self.contentView.hidden = true;
+        [self twoMinuteTimer];
+        
     }
 }
 
--(void)setDigit:(float)digit forView:(UIView *)view {
-    view.layer.contentsRect = CGRectMake(digit * 0.1, 0, 0.1, 1.0f);
-}
+#pragma mark - record Voice Button Pressed method
 -(void)recordVoiceButtonPressed:(id)sender {
     if([voiceRecorder isRecording]){
-        [sender setTitle:@"START" forState:UIControlStateNormal];
+        // 按下後停止錄音
+        [sender setImage:[UIImage imageNamed:@"startRecord"] forState:UIControlStateNormal];
         [voiceRecorder stop];
         voiceRecorder=nil;
+        // 不能再度錄音
+        self.playContentView.hidden = false;
         self.startRecordBtn.hidden = true;
-        self.playVoiceBtn.hidden = false;
-        self.saveBtn.hidden = false;
+        [self prepreAudioPath];
+        // 停止計時
+        [self.twoMinTimer invalidate];
     }else {
         self.started = true;
         voiceRecorder.delegate = self;
-        [sender setTitle:@"STOP" forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"stopRecord"] forState:UIControlStateNormal];
+        self.contentView.hidden = true;
+        [self.oneMinTimer invalidate];
+        self.countLabel.text = [NSString stringWithFormat:@"%d",6];
+        self.countLabelTwo.text = [NSString stringWithFormat:@"%d",0];
+        self.countContentView.hidden = false;
+        self.audioProgressBar.hidden = false;
+        // 開始兩分鐘計時
+        [self twoMinuteTimer];
         [self prepareRecording];
+        // 開始為期兩分鐘錄音
         [voiceRecorder recordForDuration:120];
+        
+    }
+}
+- (IBAction)againButtonPressed:(id)sender {
+    [sender setImage:[UIImage imageNamed:@"again"] forState:UIControlStateNormal];
+    NSString * recordFilePath = [NSString stringWithFormat:@"%frecord.caf",self.time];
+    self.time = 0;
+    
+    if (self.save == false){
+        [self deleteVoiceFile:recordFilePath];
+        
+    }
+    self.nevercome = false;
+    self.playContentView.hidden = true;
+    self.contentView.hidden = false;
+    self.startRecordBtn.hidden = false;
+    self.progressSlider.hidden = true;
+    self.countContentView.hidden = true;
+    self.audioProgressBar.hidden = true;
+    self.started = false;
+    [self oneMinTimerCount];
+    [self.saveBtn setImage:[UIImage imageNamed:@"noSave"] forState:UIControlStateNormal];
+    self.save = false;
+    self.audioProgressBar.progress = 0.0;
+    self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:0]];
+}
+
+
+
+#pragma mark - play Voice Button Pressed method
+- (IBAction)playVoiceButtonPressed:(id)sender {
+
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    self.audioProgressBar.hidden = true;
+    self.progressSlider.hidden = false;
+    
+    if([voicePlayer isPlaying]){
+        [sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        [voicePlayer pause];
+        [self removeAudioTimer];
+
+    }else{
+        [sender setImage:[UIImage imageNamed:@"stopPlay"] forState:UIControlStateNormal];
+        [voicePlayer prepareToPlay];
+        [voicePlayer play];
+        [self audioDurationTimer];
+    }
+}
+- (void)prepreAudioPath {
+    NSString *recordFilePath=[NSString stringWithFormat:@"%@/Documents/%frecord.caf",NSHomeDirectory(),self.time];
+    NSURL *recordFileURL=[NSURL fileURLWithPath:recordFilePath];
+    voicePlayer=[[AVAudioPlayer alloc] initWithContentsOfURL:recordFileURL error:nil];
+    voicePlayer.delegate = self;
+    voicePlayer.numberOfLoops = 0;
+    self.audioDuration = voicePlayer.duration;
+
+}
+-(void)audioDurationTimer {
+    [self audioDurationCount];
+    self.audioSeconds = 0;
+    self.audioTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(audioDurationCount) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.audioTimer forMode:NSRunLoopCommonModes];
+
+}
+-(void)audioDurationCount {
+    self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:voicePlayer.currentTime]];
+    
+    CGFloat progressRatio = voicePlayer.currentTime / voicePlayer.duration;
+
+    
+    self.audioSeconds ++;
+    self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:voicePlayer.currentTime]];
+    self.setTime.text = [NSString stringWithFormat:@"%@",[self formatTime:self.audioDuration]];
+
+    if (!self.isDraggingTimeSlider) {
+        self.progressSlider.value = progressRatio;
     }
 }
 
-- (IBAction)playVoiceButtonPressed:(id)sender {
-    if([voicePlayer isPlaying]){
-        [sender setTitle:@"PLAY" forState:UIControlStateNormal];
-        [voicePlayer stop];
-        voicePlayer=nil;
-    }else{
-        [sender setTitle:@"STOP" forState:UIControlStateNormal];
-        NSString *recordFilePath=[NSString stringWithFormat:@"%@/Documents/%frecord.caf",NSHomeDirectory(),self.time];
-        NSURL *recordFileURL=[NSURL fileURLWithPath:recordFilePath];
-        voicePlayer=[[AVAudioPlayer alloc] initWithContentsOfURL:recordFileURL error:nil];
-        voicePlayer.numberOfLoops = 0;
-        [voicePlayer prepareToPlay];
-        voicePlayer.delegate = self;
-        [voicePlayer play];
-    }
+-(void)removeAudioTimer {
+    [self.audioTimer invalidate];
+    self.audioTimer = nil;
 }
+
+#pragma mark - save test data to core data method
 - (IBAction)saveButtonPressed:(id)sender {
+    NSString * recordFilePath = [NSString stringWithFormat:@"/Documents/%frecord.caf",self.time];
     
     if (self.save == false){
+        [sender setImage:[UIImage imageNamed:@"save"] forState:UIControlStateNormal];
         self.save = true;
-        Testdata * testItem = [dataManager createItem];
+        self.again = false;
+        Testdata * testItem = [tabrVC.dataManager createItem];
         testItem.createtime = [NSDate date];
         testItem.qustopic = self.quesDic[@"QusTopic"];
         testItem.question = self.quesDic[@"Question"];
-        NSString * recordFilePath = [NSString stringWithFormat:@"%@/Documents/%frecord.caf",NSHomeDirectory(),self.time];
+        
         testItem.voice_audio = recordFilePath;
-        [dataManager saveContextWithCompletion:^(BOOL success) {
+        [tabrVC.dataManager saveContextWithCompletion:^(BOOL success) {
             if (success){
                 NSLog(@"存了！！！！！");
             }
         }];
     }else {
-        
-        NSString * recordFilePath = [NSString stringWithFormat:@"%@/Documents/%frecord.caf",NSHomeDirectory(),self.time];
-        NSArray * result = [dataManager searchAtField:@"voice_audio" forKeyword:recordFilePath];
-        [dataManager deleteItem:result.firstObject];
-        [dataManager saveContextWithCompletion:^(BOOL success) {
+        [sender setImage:[UIImage imageNamed:@"noSave"] forState:UIControlStateNormal];
+        NSArray * result = [tabrVC.dataManager searchAtField:@"voice_audio" forKeyword:recordFilePath];
+        [tabrVC.dataManager deleteItem:result.firstObject];
+        [tabrVC.dataManager saveContextWithCompletion:^(BOOL success) {
             if (success){
                 NSLog(@"刪了也存了！！！！！");
             }
         }];
         self.save = false;
+        self.again = true;
     }
     
+    
 }
+#pragma mark - finish record or play method
 -(void)audioPlayerDidFinishPlaying: (AVAudioPlayer *)player successfully:(BOOL)flag {
-    NSLog(@"停了");
-    [self.playVoiceBtn setTitle:@"PLAY" forState:UIControlStateNormal];
+    
+    self.progressSlider.value = voicePlayer.duration;
+    self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.audioDuration]];
+    self.setTime.text = [NSString stringWithFormat:@"%@",[self formatTime:self.audioDuration]];
+    [self.playVoiceBtn setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    [self removeAudioTimer];
     [voicePlayer stop];
-    voicePlayer=nil;
+
 }
--(void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag {
-    NSLog(@"說話啊！！！！！！！");
-}
-- (void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError * __nullable)error{
-    if (error){
-        NSLog(@"%@",error);
-    }else{
-        NSLog(@"說話啊！！！！！！！");
-    }
-    
-}
+
+#pragma mark - prepareRecording file path method
 - (void) prepareRecording {
-    
     NSDictionary *settings=
     @{AVFormatIDKey: [NSNumber numberWithInt:kAudioFormatAppleIMA4],
       AVSampleRateKey: [NSNumber numberWithFloat:22050.0],
@@ -212,21 +352,107 @@
     
 }
 
+#pragma mark - navigation Back Btn Tap
+-(void)navigationBackBtnTap{
+    // 確保使用者不是忘了按存檔，可能會添加設定按鈕讓他選擇要不要跳提醒
+    if (self.started == true && self.save == false && self.again == true){
+        [self alertSetMessage:@"是否儲存剛剛的測試" settitle:@"即將離開"];
+    }
+    if (self.nevercome == true && self.started == true && self.save == false){
+        [self alertSetMessage:@"是否儲存剛剛的測試" settitle:@"即將離開"];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)deleteVoiceFile:(NSString *)filename {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString * filePath = [documentsPath stringByAppendingPathComponent:filename];
+    NSError * error;
+    BOOL success = [fileManager removeItemAtPath:filePath error:&error];
+    if (success) {
+        NSLog(@"刪掉了喔！！！！");
+    }
+    else{
+        NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+    }
+}
+- (void)alertSetMessage:(NSString *)message settitle:(NSString *)title{
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * save = [UIAlertAction actionWithTitle:@"save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSString * recordFilePath = [NSString stringWithFormat:@"/Documents/%frecord.caf",self.time];
+        Testdata * testItem = [tabrVC.dataManager createItem];
+        testItem.createtime = [NSDate date];
+        testItem.qustopic = self.quesDic[@"QusTopic"];
+        testItem.question = self.quesDic[@"Question"];
+        
+        testItem.voice_audio = recordFilePath;
+        [tabrVC.dataManager saveContextWithCompletion:^(BOOL success) {
+            if (success){
+                NSLog(@"存了！！！！！");
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }];
+    
+    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSString * recordFilePath = [NSString stringWithFormat:@"%frecord.caf",self.time];
+        [self deleteVoiceFile:recordFilePath];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    [alert addAction:save];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - Disappear and shut down all timer
+-(void)viewWillDisappear:(BOOL)animated {
+    // 離開前先關閉所有timer
+    [self timerInvalidate];
+    [voicePlayer stop];
+    voicePlayer = nil;
+    [voiceRecorder stop];
+    voiceRecorder = nil;
+}
+
+-(void)timerInvalidate {
+    [self.oneMinTimer invalidate];
+    self.oneMinTimer = nil;
+    [self.twoMinTimer invalidate];
+    self.twoMinTimer = nil;
+    [self.audioTimer invalidate];
+    self.audioTimer = nil;
+}
+-(void)viewWillAppear:(BOOL)animated {
+    self.navigationItem.title = @"Test";
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)fontFamily {
+    self.topicLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:15];
+    self.QusLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:22];
+    self.hintTextView.font = [UIFont fontWithName:@"PingFangSC-Light" size:15];
 }
-*/
 
+- (IBAction)sliderTouchDown:(id)sender {
+    [self removeAudioTimer];
+    self.isDraggingTimeSlider = true;
+}
 
+- (IBAction)sliderValueChanged:(id)sender {
+    self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.progressSlider.value * voicePlayer.duration]];
+    voicePlayer.currentTime = self.progressSlider.value * voicePlayer.duration;
+}
+
+- (IBAction)sliderTouchUpInside:(id)sender {
+    self.isDraggingTimeSlider = false;
+    [self audioDurationTimer];
+}
 @end

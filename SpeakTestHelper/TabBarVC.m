@@ -7,17 +7,31 @@
 //
 
 #import "TabBarVC.h"
+#import "CoreDataManager.h"
+#import "TestData+CoreDataModel.h"
+
+static TabBarVC * tabBarVC = nil;
 
 @interface TabBarVC ()
 
 @end
 
 @implementation TabBarVC
++(instancetype)shared {
+    if (tabBarVC == nil) {
+        tabBarVC = [TabBarVC new];
+    }
+    
+    return tabBarVC;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    dataManager = [[CoreDataManager alloc]initWithModel:@"TestData" dbFileNAme:@"test.sqlite" dbPathURL:nil sortKey:@"createtime" entityName:@"Testdata"];
+    
+    self.dataManager = [[CoreDataManager alloc]initWithModel:@"TestData" dbFileNAme:@"test.sqlite" dbPathURL:nil sortKey:@"createtime" entityName:@"Testdata"];
+
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -16,21 +16,15 @@
 		9BB970131F56E3F9009B84E5 /* SpeakingTopic.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BB970121F56E3F9009B84E5 /* SpeakingTopic.plist */; };
 		9BB970161F57EA35009B84E5 /* PickTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB970151F57EA35009B84E5 /* PickTableViewController.m */; };
 		9BB970191F580E5D009B84E5 /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB970181F580E5D009B84E5 /* TestVC.m */; };
-		9BB970201F5880A8009B84E5 /* ExpandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9701D1F5880A8009B84E5 /* ExpandCell.xib */; };
-		9BB970211F5880A8009B84E5 /* ExpandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9701F1F5880A8009B84E5 /* ExpandCell.m */; };
-		9BB9702B1F588408009B84E5 /* ico_faq_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BB970241F588408009B84E5 /* ico_faq_d.png */; };
-		9BB9702C1F588408009B84E5 /* ico_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BB970251F588408009B84E5 /* ico_list.png */; };
-		9BB9702D1F588408009B84E5 /* ico_listdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BB970261F588408009B84E5 /* ico_listdown.png */; };
-		9BB9702E1F588408009B84E5 /* ico_listup.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BB970271F588408009B84E5 /* ico_listup.png */; };
-		9BB9702F1F588408009B84E5 /* line_real.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BB970281F588408009B84E5 /* line_real.png */; };
-		9BB970351F593878009B84E5 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB970331F593878009B84E5 /* CoreDataManager.m */; };
 		9BB970381F599999009B84E5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB970371F599999009B84E5 /* AVFoundation.framework */; };
 		9BB9703B1F5AB0B2009B84E5 /* TestData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BB970391F5AB0B2009B84E5 /* TestData.xcdatamodeld */; };
 		9BB9703E1F5ACCC0009B84E5 /* CollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9703D1F5ACCC0009B84E5 /* CollectionVC.m */; };
 		9BB970441F5ACEEA009B84E5 /* TabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB970431F5ACEEA009B84E5 /* TabBarVC.m */; };
 		9BB970471F5AD246009B84E5 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB970461F5AD246009B84E5 /* CollectionCell.m */; };
 		9BB9704A1F5AE4F6009B84E5 /* CollectionDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB970491F5AE4F6009B84E5 /* CollectionDetailVC.m */; };
-		9BB9704D1F5AEA47009B84E5 /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9704C1F5AEA47009B84E5 /* 11.jpg */; };
+		9BB9705E1F5DC8A8009B84E5 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9705D1F5DC8A8009B84E5 /* CoreDataManager.m */; };
+		9BB970621F5DC8FC009B84E5 /* ExpandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB970601F5DC8FC009B84E5 /* ExpandCell.m */; };
+		9BB970631F5DC8FC009B84E5 /* ExpandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BB970611F5DC8FC009B84E5 /* ExpandCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,16 +43,6 @@
 		9BB970151F57EA35009B84E5 /* PickTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickTableViewController.m; sourceTree = "<group>"; };
 		9BB970171F580E5D009B84E5 /* TestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestVC.h; sourceTree = "<group>"; };
 		9BB970181F580E5D009B84E5 /* TestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVC.m; sourceTree = "<group>"; };
-		9BB9701D1F5880A8009B84E5 /* ExpandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpandCell.xib; path = "../../Downloads/ExpandTableView-master/ExpandTableView/ExpandCell.xib"; sourceTree = "<group>"; };
-		9BB9701E1F5880A8009B84E5 /* ExpandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandCell.h; path = "../../Downloads/ExpandTableView-master/ExpandTableView/ExpandCell.h"; sourceTree = "<group>"; };
-		9BB9701F1F5880A8009B84E5 /* ExpandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpandCell.m; path = "../../Downloads/ExpandTableView-master/ExpandTableView/ExpandCell.m"; sourceTree = "<group>"; };
-		9BB970241F588408009B84E5 /* ico_faq_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_faq_d.png; sourceTree = "<group>"; };
-		9BB970251F588408009B84E5 /* ico_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_list.png; sourceTree = "<group>"; };
-		9BB970261F588408009B84E5 /* ico_listdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_listdown.png; sourceTree = "<group>"; };
-		9BB970271F588408009B84E5 /* ico_listup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_listup.png; sourceTree = "<group>"; };
-		9BB970281F588408009B84E5 /* line_real.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line_real.png; sourceTree = "<group>"; };
-		9BB970331F593878009B84E5 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataManager.m; path = ../../Desktop/Kent/HelloMyCoreDataManager/HelloMyCoreDataManager/CoreDataManager.m; sourceTree = "<group>"; };
-		9BB970341F593878009B84E5 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataManager.h; path = ../../Desktop/Kent/HelloMyCoreDataManager/HelloMyCoreDataManager/CoreDataManager.h; sourceTree = "<group>"; };
 		9BB970371F599999009B84E5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9BB9703A1F5AB0B2009B84E5 /* TestData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestData.xcdatamodel; sourceTree = "<group>"; };
 		9BB9703C1F5ACCC0009B84E5 /* CollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionVC.h; sourceTree = "<group>"; };
@@ -69,7 +53,11 @@
 		9BB970461F5AD246009B84E5 /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
 		9BB970481F5AE4F6009B84E5 /* CollectionDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionDetailVC.h; sourceTree = "<group>"; };
 		9BB970491F5AE4F6009B84E5 /* CollectionDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionDetailVC.m; sourceTree = "<group>"; };
-		9BB9704C1F5AEA47009B84E5 /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
+		9BB9705C1F5DC8A8009B84E5 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		9BB9705D1F5DC8A8009B84E5 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		9BB9705F1F5DC8FC009B84E5 /* ExpandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandCell.h; sourceTree = "<group>"; };
+		9BB970601F5DC8FC009B84E5 /* ExpandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpandCell.m; sourceTree = "<group>"; };
+		9BB970611F5DC8FC009B84E5 /* ExpandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +97,6 @@
 				9BB9704B1F5AE7F8009B84E5 /* Model */,
 				9BB970321F59094F009B84E5 /* Controll */,
 				9BB970311F59093A009B84E5 /* View */,
-				9BB970221F588408009B84E5 /* Resources */,
 				9BB970021F56E2FC009B84E5 /* Main.storyboard */,
 				9BB970051F56E2FC009B84E5 /* Assets.xcassets */,
 				9BB970071F56E2FC009B84E5 /* LaunchScreen.storyboard */,
@@ -129,26 +116,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9BB970221F588408009B84E5 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9BB9704C1F5AEA47009B84E5 /* 11.jpg */,
-				9BB970241F588408009B84E5 /* ico_faq_d.png */,
-				9BB970251F588408009B84E5 /* ico_list.png */,
-				9BB970261F588408009B84E5 /* ico_listdown.png */,
-				9BB970271F588408009B84E5 /* ico_listup.png */,
-				9BB970281F588408009B84E5 /* line_real.png */,
-			);
-			name = Resources;
-			path = "../../Downloads/ExpandTableView-master/ExpandTableView/Resources";
-			sourceTree = "<group>";
-		};
 		9BB970311F59093A009B84E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9BB9701D1F5880A8009B84E5 /* ExpandCell.xib */,
-				9BB9701E1F5880A8009B84E5 /* ExpandCell.h */,
-				9BB9701F1F5880A8009B84E5 /* ExpandCell.m */,
+				9BB9705F1F5DC8FC009B84E5 /* ExpandCell.h */,
+				9BB970601F5DC8FC009B84E5 /* ExpandCell.m */,
+				9BB970611F5DC8FC009B84E5 /* ExpandCell.xib */,
 				9BB970451F5AD246009B84E5 /* CollectionCell.h */,
 				9BB970461F5AD246009B84E5 /* CollectionCell.m */,
 			);
@@ -185,8 +158,8 @@
 			children = (
 				9BB970421F5ACEEA009B84E5 /* TabBarVC.h */,
 				9BB970431F5ACEEA009B84E5 /* TabBarVC.m */,
-				9BB970341F593878009B84E5 /* CoreDataManager.h */,
-				9BB970331F593878009B84E5 /* CoreDataManager.m */,
+				9BB9705C1F5DC8A8009B84E5 /* CoreDataManager.h */,
+				9BB9705D1F5DC8A8009B84E5 /* CoreDataManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -222,6 +195,7 @@
 				TargetAttributes = {
 					9BB96FF51F56E2FC009B84E5 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = G5G94ZY4FA;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -249,15 +223,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BB9704D1F5AEA47009B84E5 /* 11.jpg in Resources */,
-				9BB970201F5880A8009B84E5 /* ExpandCell.xib in Resources */,
-				9BB9702B1F588408009B84E5 /* ico_faq_d.png in Resources */,
 				9BB970091F56E2FC009B84E5 /* LaunchScreen.storyboard in Resources */,
-				9BB9702E1F588408009B84E5 /* ico_listup.png in Resources */,
 				9BB970061F56E2FC009B84E5 /* Assets.xcassets in Resources */,
-				9BB9702F1F588408009B84E5 /* line_real.png in Resources */,
-				9BB9702C1F588408009B84E5 /* ico_list.png in Resources */,
-				9BB9702D1F588408009B84E5 /* ico_listdown.png in Resources */,
+				9BB970631F5DC8FC009B84E5 /* ExpandCell.xib in Resources */,
 				9BB970131F56E3F9009B84E5 /* SpeakingTopic.plist in Resources */,
 				9BB970041F56E2FC009B84E5 /* Main.storyboard in Resources */,
 			);
@@ -271,16 +239,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB970011F56E2FC009B84E5 /* ViewController.m in Sources */,
-				9BB970351F593878009B84E5 /* CoreDataManager.m in Sources */,
 				9BB9703E1F5ACCC0009B84E5 /* CollectionVC.m in Sources */,
 				9BB9704A1F5AE4F6009B84E5 /* CollectionDetailVC.m in Sources */,
 				9BB96FFE1F56E2FC009B84E5 /* AppDelegate.m in Sources */,
-				9BB970211F5880A8009B84E5 /* ExpandCell.m in Sources */,
 				9BB970161F57EA35009B84E5 /* PickTableViewController.m in Sources */,
+				9BB9705E1F5DC8A8009B84E5 /* CoreDataManager.m in Sources */,
 				9BB970191F580E5D009B84E5 /* TestVC.m in Sources */,
 				9BB970471F5AD246009B84E5 /* CollectionCell.m in Sources */,
 				9BB96FFB1F56E2FC009B84E5 /* main.m in Sources */,
 				9BB970441F5ACEEA009B84E5 /* TabBarVC.m in Sources */,
+				9BB970621F5DC8FC009B84E5 /* ExpandCell.m in Sources */,
 				9BB9703B1F5AB0B2009B84E5 /* TestData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,10 +371,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G5G94ZY4FA;
 				INFOPLIST_FILE = SpeakTestHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoe.SpeakTestHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -414,10 +384,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G5G94ZY4FA;
 				INFOPLIST_FILE = SpeakTestHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoe.SpeakTestHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -440,6 +412,7 @@
 				9BB9700F1F56E2FC009B84E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
