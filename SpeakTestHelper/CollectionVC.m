@@ -24,8 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSLog(@"did %ld",(long)dataCount);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +38,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    // get data from core data by index path
     Testdata * item = [tabrVC.dataManager itemWithIndex:indexPath.row];
     cell.lblTitle.text = item.question;
     NSDate * date = item.createtime;
@@ -64,19 +62,19 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    // 假定行高，最小值
     return 102;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    // 動態行高，最大值
     return UITableViewAutomaticDimension;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [self.tabBarController.tabBar setHidden:NO];
     tabrVC = [TabBarVC shared];
-
     dataCount = [tabrVC.dataManager count];
     [self.myTableView reloadData];
-    NSLog(@"will %ld",(long)dataCount);
 }
 
 @end

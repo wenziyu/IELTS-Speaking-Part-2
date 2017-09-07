@@ -26,6 +26,7 @@
 @property (nonatomic,assign) BOOL isDraggingTimeSlider;
 @property (nonatomic,assign) BOOL save;
 @property (nonatomic,strong) Testdata * thisData;
+@property (nonatomic,assign) BOOL isPlaying;
 
 - (IBAction)startSlider:(id)sender;
 - (IBAction)endSlide:(id)sender;
@@ -46,14 +47,15 @@
     UIBarButtonItem * backButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackBtnTap)];
     self.navigationItem.leftBarButtonItem = backButton;
     
-    NSArray * result = [tabrVC.dataManager searchAtField:@"voice_audio" forKeyword:self.fileName];
-    
-    
     self.questionLabel.numberOfLines = 0;
     self.isDraggingTimeSlider = false;
     self.save = true;
-    
+    self.isPlaying = false;
+
+    // use audio file path for select key select from core data
+    NSArray * result = [tabrVC.dataManager searchAtField:@"voice_audio" forKeyword:self.fileName];
     for (Testdata * tmp in result){
+        // keep this data item for delete
         self.thisData = tmp;
         NSDate * date = tmp.createtime;
         NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
@@ -66,7 +68,7 @@
         self.recordFilePath = tmp.voice_audio;
     }
     
-    
+    // permission for audio player
     AVAudioSession *instance=[AVAudioSession sharedInstance];
     if([instance respondsToSelector:@selector(requestRecordPermission:)]){
         [instance requestRecordPermission:^(BOOL granted) {
@@ -81,19 +83,18 @@
         }];
     }
 
+    
     [self prepreAudioPath];
     self.audioTimeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.audioDuration]];
     
 }
 #pragma mark - prapare for audio path
 - (void)prepreAudioPath {
-    
-    NSLog(@"我我我");
+    // combine audio file name with document directory
     NSString * Path = [NSString stringWithFormat:@"%@%@",NSHomeDirectory(),self.recordFilePath];
-
-    NSLog(@"%@",Path);
     NSURL * recordFileURL = [NSURL fileURLWithPath:Path];
     
+    // init audio play (can't init while calling play method if use pause)
     self.audioplayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recordFileURL error:nil];
     self.audioplayer.delegate = self;
     self.audioplayer.numberOfLoops = 0;
@@ -102,6 +103,7 @@
 }
 
 - (IBAction)audioPlayButtonPressed:(id)sender {
+    // Playback make volum loud
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     if([self.audioplayer isPlaying]){
         [sender setImage:[UIImage imageNamed:@"bigPlay"] forState:UIControlStateNormal];
@@ -133,6 +135,7 @@
     self.countTimeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.audioplayer.currentTime]];
     self.audioTimeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.audioDuration]];
     
+    // updating  slider value when finish dragging
     if (!self.isDraggingTimeSlider) {
         self.progressSlider.value = progressRatio;
     }
@@ -150,7 +153,6 @@
 
 -(void)audioPlayerDidFinishPlaying: (AVAudioPlayer *)player successfully:(BOOL)flag {
 
-        
     self.progressSlider.value = self.audioDuration;
     self.countTimeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.audioDuration]];
     self.audioTimeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.audioDuration]];
@@ -166,15 +168,28 @@
 
 #pragma mark - progress slider action method
 - (IBAction)startSlider:(id)sender {
-    // 碰觸時停止 timer
-     [self removeAudioTimer];
-    self.isDraggingTimeSlider = true;
+    // if playing pause and stop timer
+    if (self.audioplayer.playing){
+        self.isPlaying = YES;
+        [self.audioplayer pause];
+        [self removeAudioTimer];
+        self.isDraggingTimeSlider = true;
+        
+    }else {
+        // not playing just stop timer
+        [self removeAudioTimer];
+        self.isDraggingTimeSlider = true;
+    }
 }
 
 - (IBAction)endSlide:(id)sender {
-
-    self.isDraggingTimeSlider = false;
-    [self audioDurationTimer];
+    // if playing then keep play and start timer
+    if (self.isPlaying == YES){
+        [self.audioplayer play];
+        [self audioDurationTimer];
+        self.isDraggingTimeSlider = false;
+        self.isPlaying = NO;
+    }
 }
 
 - (IBAction)sliderValueChange:(id)sender {
@@ -204,15 +219,15 @@
 }
 
 -(void)navigationBackBtnTap{
-    NSLog(@"navigationBackBtnTap");
+    
     if (self.save == false){
-        NSLog(@"save = false 要刪了喔");
         [self deleteVoiceFile:self.recordFilePath];
         [self delectFromCoreData];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)viewWillDisappear:(BOOL)animated {
+    // dont forget to stop all timer and player when leaveing
     [self.audioplayer stop];
     self.audioplayer = nil;
     [self removeAudioTimer];
@@ -229,6 +244,7 @@
         [self.saveBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
     }
 }
+#pragma mark - delete audio file form file manager
 - (void)deleteVoiceFile:(NSString *)filename {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
@@ -237,11 +253,11 @@
     BOOL success = [fileManager removeItemAtPath:Path error:&error];
     if (success) {
         NSLog(@"刪掉了喔！！！！");
-    }
-    else{
+    }else{
         NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
     }
 }
+
 - (void) delectFromCoreData {
     [tabrVC.dataManager deleteItem:self.thisData];
     [tabrVC.dataManager saveContextWithCompletion:^(BOOL success) {

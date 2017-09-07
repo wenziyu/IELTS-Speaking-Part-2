@@ -13,8 +13,8 @@
 #define kCell_Height 44
 @interface PickTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    NSMutableArray      *stateArray;
-    UITableView         *expandTable;
+    NSMutableArray * stateArray;
+    UITableView * expandTable;
 }
 @property (nonatomic,strong) NSArray * questionList;
 @property (nonatomic,strong) NSDictionary * question;
@@ -22,22 +22,29 @@
 @end
 
 @implementation PickTableViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self initDataSource];
+    [self initTable];
+}
+
 - (void)initDataSource {
+    // get data from plist
     NSString * filePath = [[NSBundle mainBundle] pathForResource:@"SpeakingTopic" ofType:@"plist"];
-    
     self.questionList = [[NSArray alloc]initWithContentsOfFile:filePath];
+    
     stateArray = [NSMutableArray array];
     for (int i = 0; i < self.questionList.count; i++){
-        //當0時 表示所有 section 關起來
+        // 預設為0 - 當0時 表示所有 section 關起來
         [stateArray addObject:@"0"];
     }
     
     UIImage * image = [UIImage imageNamed:@"back"];
     UIBarButtonItem * backButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackBtnTap)];
     self.navigationItem.leftBarButtonItem = backButton;
-
-    
 }
+
 -(void)initTable{
     expandTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height - 110) style:UITableViewStylePlain];
     expandTable.dataSource = self;
@@ -45,12 +52,6 @@
     expandTable.tableFooterView = [UIView new];
     [expandTable registerNib:[UINib nibWithNibName:@"ExpandCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:expandTable];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self initDataSource];
-    [self initTable];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,11 +67,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     if ([stateArray[section] isEqualToString:@"1"]){
-        //如果是展開狀態
+        //如果是展開狀態 則回報有多少 row
         NSArray * array = [self.questionList objectAtIndex:section];
         return array.count;
     }else{
-        //如果是關起來
+        //如果是關起來 0個row
         return 0;
     }
 }
@@ -86,16 +87,15 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    TestVC * testVc = [[TestVC alloc] init];
      TestVC * testVC = [self.storyboard instantiateViewControllerWithIdentifier:@"TestVC"];
     testVC.quesDic = [self questionDic:indexPath];
-    
-//    [self presentViewController:testVC animated:YES completion:nil];
+
     testVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:testVC animated:YES];
-    
 }
+
 -(NSDictionary *)questionDic:(NSIndexPath *)indexPath {
+    // 從 plist 的 dictionary 解析出來
     NSString * str = [[NSString alloc] initWithFormat:(@"Question_%ld"),indexPath.row + 1];
     NSDictionary * topic = self.questionList[indexPath.section];
     self.question = topic[str];
@@ -142,7 +142,7 @@
     return button;
 }
 - (void)buttonPress:(UIButton *)sender {
-    
+    // 1 展開 0 收合
     if ([stateArray[sender.tag] isEqualToString:@"1"]){
         
         [stateArray replaceObjectAtIndex:sender.tag withObject:@"0"];
@@ -182,13 +182,30 @@
         case 2:
             return qiz[@"QusTopic"];
             break;
+        case 3:
+            return qiz[@"QusTopic"];
+            break;
+        case 4:
+            return qiz[@"QusTopic"];
+            break;
+        case 5:
+            return qiz[@"QusTopic"];
+            break;
+        case 6:
+            return qiz[@"QusTopic"];
+            break;
+        case 7:
+            return qiz[@"QusTopic"];
+            break;
+        case 8:
+            return qiz[@"QusTopic"];
+            break;
         default:
             return @"";
             break;
     }
 }
 -(void)navigationBackBtnTap{
-    NSLog(@"navigationBackBtnTap");
     [self.navigationController popViewControllerAnimated:YES];
 }
 

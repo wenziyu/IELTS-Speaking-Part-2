@@ -27,6 +27,7 @@
 @property (nonatomic,weak)NSTimer * twoMinTimer;
 @property (nonatomic,assign) int twoMinSeconds;
 
+// player 倒數
 @property (nonatomic,weak)NSTimer * audioTimer;
 @property (nonatomic,assign) int audioSeconds;
 
@@ -34,18 +35,23 @@
 @property (weak, nonatomic) IBOutlet UITextView *hintTextView;
 @property (weak, nonatomic) IBOutlet UILabel *topicLabel;
 @property (nonatomic,assign) NSTimeInterval time;
-@property (nonatomic, assign)BOOL started;
-@property (nonatomic,assign) NSString * videoFilePath;
-@property (nonatomic, assign)BOOL save;
-@property (nonatomic, assign) float proValue;
 @property (nonatomic,assign) NSTimeInterval audioDuration;
+@property (nonatomic,assign) NSString * videoFilePath;
+@property (nonatomic, assign) float proValue;
+
+@property (nonatomic, assign)BOOL save;
+@property (nonatomic, assign)BOOL started;
 @property (nonatomic,assign) BOOL again;
 @property (nonatomic,assign) BOOL nevercome;
 @property (nonatomic,assign) BOOL play;
 @property (nonatomic,assign) BOOL isDraggingTimeSlider;
+@property (nonatomic,assign) BOOL isPlaying;
+
 - (IBAction)sliderTouchDown:(id)sender;
 - (IBAction)sliderValueChanged:(id)sender;
 - (IBAction)sliderTouchUpInside:(id)sender;
+
+
 
 @end
 
@@ -55,8 +61,10 @@
     [super viewDidLoad];
     
     tabrVC = [TabBarVC shared];
-    self.QusLabel.numberOfLines = 0;
+    
+    
     // 題目 label
+    self.QusLabel.numberOfLines = 0;
     self.QusLabel.text = self.quesDic[@"Question"];
     NSString * replaceHint = [self.quesDic[@"Hint"] stringByReplacingOccurrencesOfString:@"&" withString:@"\n"];
     self.hintTextView.text = replaceHint;
@@ -75,10 +83,10 @@
     self.audioProgressBar.hidden = true;
     self.countContentView.hidden = true;
     self.progressSlider.hidden = true;
+    self.isPlaying = false;
     
     [self fontFamily];
     
-
     UIImage * image = [UIImage imageNamed:@"back"];
     UIBarButtonItem * backButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackBtnTap)];
     self.navigationItem.leftBarButtonItem = backButton;
@@ -103,44 +111,6 @@
 
 }
 
-#pragma mark - two minute count method
--(void)twoMinuteTimer {
-    self.twoMinSeconds = 1;
-    self.audioProgressBar.progress = 0.0;
-    self.proValue = 0;
-    self.twoMinTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countTime) userInfo:nil repeats:YES];
-
-}
--(void)countTime {
-    NSLog(@"%f",self.audioProgressBar.progress);
-    self.twoMinSeconds ++;
-    
-    self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.twoMinSeconds]];
-    self.setTime.text = [NSString stringWithFormat:@"%@",[self formatTime:120]];
-    
-    // 1 / 120 = 0.0083333333 一秒跑這樣
-    self.proValue += 0.00833;
-    self.audioProgressBar.progress = self.proValue;
-    
-    // 兩分鐘到了自動停止
-    if (self.twoMinSeconds == 120){
-        [self.twoMinTimer invalidate];
-        // 顯示為02:00/02:00
-        self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:120]];
-        self.setTime.text = [NSString stringWithFormat:@"%@",[self formatTime:120]];
-        self.playContentView.hidden = false;
-        self.startRecordBtn.hidden = true;
-        self.audioProgressBar.progress = 1;
-        [self prepreAudioPath];
-    }
-   
-
-}
-- (NSString *)formatTime:(int)num{
-    int sec = num % 60;
-    int min = num / 60;
-    return [NSString stringWithFormat:@"%02d:%02d",min,sec];
-}
 
 #pragma mark - one minute count method
 - (void)oneMinTimerCount {
@@ -154,16 +124,72 @@
     self.countLabelTwo.text = [NSString stringWithFormat:@"%d",self.totalSeconds % 10];
     
     if ( self.totalSeconds == 0 ) {
-        
         [self.oneMinTimer invalidate];
         [self prepareRecording];
-        [voiceRecorder recordForDuration:120];
+        [voiceRecorder recordForDuration:135];
         self.started = true;
         [self.startRecordBtn setImage:[UIImage imageNamed:@"stopRecord"] forState:UIControlStateNormal];
         self.contentView.hidden = true;
         [self twoMinuteTimer];
-        
     }
+}
+
+#pragma mark - two minute count method
+-(void)twoMinuteTimer {
+    self.twoMinSeconds = 1;
+    self.audioProgressBar.progress = 0.0;
+    self.proValue = 0;
+    self.twoMinTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countTime) userInfo:nil repeats:YES];
+    
+}
+-(void)countTime {
+    self.twoMinSeconds ++;
+    
+    [self lightImageViewSetting];
+    self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.twoMinSeconds]];
+    self.setTime.text = [NSString stringWithFormat:@"%@",[self formatTime:135]];
+    
+    // 1 / 135 = 0.00740 一秒跑這樣
+    self.proValue += 0.00740;
+    self.audioProgressBar.progress = self.proValue;
+    
+    // 兩分鐘到了自動停止
+    if (self.twoMinSeconds == 135){
+        [self.twoMinTimer invalidate];
+        // 顯示為02:00/02:00
+        self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:135]];
+        self.setTime.text = [NSString stringWithFormat:@"%@",[self formatTime:135]];
+        self.playContentView.hidden = false;
+        self.startRecordBtn.hidden = true;
+        self.audioProgressBar.progress = 1;
+        // 錄音結束後準備檔案給 player 播放
+        [self prepreAudioPath];
+    }
+}
+
+- (NSString *)formatTime:(int)num{
+    int sec = num % 60;
+    int min = num / 60;
+    return [NSString stringWithFormat:@"%02d:%02d",min,sec];
+}
+- (void) lightImageViewSetting {
+    // 給燈提示 一分鐘橘燈 一分半綠燈 兩分鐘紅燈
+    if (self.twoMinSeconds == 60){
+        self.lightImageView.image = [UIImage imageNamed:@"orange"];
+    }else if (self.twoMinSeconds == 65) {
+        self.lightImageView.hidden = true;
+    }else if (self.twoMinSeconds == 90){
+        self.lightImageView.hidden = false;
+        self.lightImageView.image = [UIImage imageNamed:@"green"];
+    }else if (self.twoMinSeconds == 95){
+        self.lightImageView.hidden = true;
+    }else if (self.twoMinSeconds == 120){
+        self.lightImageView.hidden = false;
+        self.lightImageView.image = [UIImage imageNamed:@"red"];
+    }else if (self.twoMinSeconds == 125){
+        self.lightImageView.hidden = true;
+    }
+
 }
 
 #pragma mark - record Voice Button Pressed method
@@ -176,6 +202,7 @@
         // 不能再度錄音
         self.playContentView.hidden = false;
         self.startRecordBtn.hidden = true;
+        // 錄音結束後準備檔案給 player 播放
         [self prepreAudioPath];
         // 停止計時
         [self.twoMinTimer invalidate];
@@ -184,6 +211,7 @@
         voiceRecorder.delegate = self;
         [sender setImage:[UIImage imageNamed:@"stopRecord"] forState:UIControlStateNormal];
         self.contentView.hidden = true;
+        // 停止一分鐘倒數計時
         [self.oneMinTimer invalidate];
         self.countLabel.text = [NSString stringWithFormat:@"%d",6];
         self.countLabelTwo.text = [NSString stringWithFormat:@"%d",0];
@@ -193,19 +221,21 @@
         [self twoMinuteTimer];
         [self prepareRecording];
         // 開始為期兩分鐘錄音
-        [voiceRecorder recordForDuration:120];
+        [voiceRecorder recordForDuration:135];
         
     }
 }
+#pragma mark - if user want to record again
 - (IBAction)againButtonPressed:(id)sender {
     [sender setImage:[UIImage imageNamed:@"again"] forState:UIControlStateNormal];
     NSString * recordFilePath = [NSString stringWithFormat:@"%frecord.caf",self.time];
+    // clean new time for file name
     self.time = 0;
-    
+    // 如果 again 之前沒有存檔 則捨棄剛剛的音檔
     if (self.save == false){
         [self deleteVoiceFile:recordFilePath];
-        
     }
+    
     self.nevercome = false;
     self.playContentView.hidden = true;
     self.contentView.hidden = false;
@@ -250,23 +280,20 @@
     voicePlayer.delegate = self;
     voicePlayer.numberOfLoops = 0;
     self.audioDuration = voicePlayer.duration;
-
 }
 -(void)audioDurationTimer {
     [self audioDurationCount];
-    self.audioSeconds = 0;
+    self.audioSeconds = 1;
     self.audioTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(audioDurationCount) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.audioTimer forMode:NSRunLoopCommonModes];
 
 }
 -(void)audioDurationCount {
-    self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:voicePlayer.currentTime]];
-    
     CGFloat progressRatio = voicePlayer.currentTime / voicePlayer.duration;
-
     
     self.audioSeconds ++;
     self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:voicePlayer.currentTime]];
+    
     self.setTime.text = [NSString stringWithFormat:@"%@",[self formatTime:self.audioDuration]];
 
     if (!self.isDraggingTimeSlider) {
@@ -284,6 +311,7 @@
     NSString * recordFilePath = [NSString stringWithFormat:@"/Documents/%frecord.caf",self.time];
     
     if (self.save == false){
+        // 如果還沒存 要存
         [sender setImage:[UIImage imageNamed:@"save"] forState:UIControlStateNormal];
         self.save = true;
         self.again = false;
@@ -291,7 +319,6 @@
         testItem.createtime = [NSDate date];
         testItem.qustopic = self.quesDic[@"QusTopic"];
         testItem.question = self.quesDic[@"Question"];
-        
         testItem.voice_audio = recordFilePath;
         [tabrVC.dataManager saveContextWithCompletion:^(BOOL success) {
             if (success){
@@ -299,6 +326,7 @@
             }
         }];
     }else {
+        // 如果又反悔剛剛得存檔 則刪除
         [sender setImage:[UIImage imageNamed:@"noSave"] forState:UIControlStateNormal];
         NSArray * result = [tabrVC.dataManager searchAtField:@"voice_audio" forKeyword:recordFilePath];
         [tabrVC.dataManager deleteItem:result.firstObject];
@@ -310,9 +338,8 @@
         self.save = false;
         self.again = true;
     }
-    
-    
 }
+
 #pragma mark - finish record or play method
 -(void)audioPlayerDidFinishPlaying: (AVAudioPlayer *)player successfully:(BOOL)flag {
     
@@ -356,18 +383,18 @@
 -(void)navigationBackBtnTap{
     // 確保使用者不是忘了按存檔，可能會添加設定按鈕讓他選擇要不要跳提醒
     if (self.started == true && self.save == false && self.again == true){
-        [self alertSetMessage:@"是否儲存剛剛的測試" settitle:@"即將離開"];
+        [self alertSetMessage:@"是否儲存剛剛的測驗" settitle:@"即將離開"];
     }
     if (self.nevercome == true && self.started == true && self.save == false){
-        [self alertSetMessage:@"是否儲存剛剛的測試" settitle:@"即將離開"];
+        [self alertSetMessage:@"是否儲存剛剛的測驗" settitle:@"即將離開"];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)deleteVoiceFile:(NSString *)filename {
+    // 離開時不想存剛剛的音檔 則刪除
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
     NSString * filePath = [documentsPath stringByAppendingPathComponent:filename];
     NSError * error;
     BOOL success = [fileManager removeItemAtPath:filePath error:&error];
@@ -411,7 +438,7 @@
 
 #pragma mark - Disappear and shut down all timer
 -(void)viewWillDisappear:(BOOL)animated {
-    // 離開前先關閉所有timer
+    // 離開前先關閉所有timer 和 audio player reocrder
     [self timerInvalidate];
     [voicePlayer stop];
     voicePlayer = nil;
@@ -420,6 +447,7 @@
 }
 
 -(void)timerInvalidate {
+    
     [self.oneMinTimer invalidate];
     self.oneMinTimer = nil;
     [self.twoMinTimer invalidate];
@@ -441,18 +469,36 @@
     self.hintTextView.font = [UIFont fontWithName:@"PingFangSC-Light" size:15];
 }
 
-- (IBAction)sliderTouchDown:(id)sender {
-    [self removeAudioTimer];
-    self.isDraggingTimeSlider = true;
-}
-
+#pragma mark - slider methods
 - (IBAction)sliderValueChanged:(id)sender {
+    // 更新 label 和 player currentTime
     self.timeLabel.text = [NSString stringWithFormat:@"%@",[self formatTime:self.progressSlider.value * voicePlayer.duration]];
     voicePlayer.currentTime = self.progressSlider.value * voicePlayer.duration;
 }
 
-- (IBAction)sliderTouchUpInside:(id)sender {
-    self.isDraggingTimeSlider = false;
-    [self audioDurationTimer];
+- (IBAction)sliderTouchDown:(id)sender {
+    // 按下的那剎那 如果正在播放 則暫停播放和時間
+    if (voicePlayer.playing){
+        self.isPlaying = YES;
+        [voicePlayer pause];
+        [self removeAudioTimer];
+        self.isDraggingTimeSlider = true;
+
+    }else {
+        // 如果不是在播放 則暫停時間
+        [self removeAudioTimer];
+        self.isDraggingTimeSlider = true;
+    }
 }
+
+- (IBAction)sliderTouchUpInside:(id)sender {
+    // 如果剛剛是播放狀態按下 則繼續播放和時間
+    if (self.isPlaying == YES){
+        [voicePlayer play];
+        [self audioDurationTimer];
+        self.isDraggingTimeSlider = false;
+        self.isPlaying = NO;
+    }
+}
+
 @end

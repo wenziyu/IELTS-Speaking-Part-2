@@ -3,21 +3,570 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>Question_6</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Language learning</string>
+			<key>Question</key>
+			<string>Describe an English class that you enjoyed</string>
+			<key>Hint</key>
+			<string>when and where you had the lesson?&amp;who gave the lesson?&amp;what the lesson was about?&amp;and explain why you enjoyed it.</string>
+		</dict>
+		<key>Question_5</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Language learning</string>
+			<key>Question</key>
+			<string>Talk about something you would like to do after you pass IELTS. </string>
+			<key>Hint</key>
+			<string>When you think you will do it?&amp;Why you would like to do that thing?&amp;How long you have had that plan?&amp;And say whether you think having that plan will motivate you to do better in the test or not, and why?</string>
+		</dict>
+		<key>Question_4</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Language learning</string>
+			<key>Question</key>
+			<string>Talk about a language test you have taken. </string>
+			<key>Hint</key>
+			<string>Where you took the test?&amp;How long it took?&amp;What skills and language knowledge you were tested on?&amp;And say if you think that was a good test of your language level or not, and why?</string>
+		</dict>
+		<key>Question_3</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Language learning</string>
+			<key>Question</key>
+			<string>Talk about an English language book you have read or used. </string>
+			<key>Hint</key>
+			<string>Why you bought or used that book?&amp;What you learnt from using it?&amp;If it was difficult or easy to use?&amp;And say if you would use a similar book again or not, and why?</string>
+		</dict>
+		<key>Question_2</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Language learning</string>
+			<key>Question</key>
+			<string>Talk about one method of learning a foreign language you have used. </string>
+			<key>Hint</key>
+			<string>What you did?&amp;How long you used this method for?&amp;How it compares to other methods of learning a language?&amp;And say if you will use that same method in the future or not, and why?</string>
+		</dict>
 		<key>Question_1</key>
 		<dict>
 			<key>QusTopic</key>
-			<string>House, home and accommodation </string>
+			<string>Language learning</string>
 			<key>Question</key>
-			<string>Describe your favourite room in the place you are living now </string>
+			<string>Talk about another language you would like to learn. </string>
 			<key>Hint</key>
-			<string>What it looks like?&amp;What you usually use it for?&amp;Why you like it?&amp;And how it compares to other rooms you have been in or know about?</string>
+			<string>Which countries or regions it is spoken in?&amp;How it is different from your language and from English?&amp;Why you are interested in that language?&amp;And say if you think it is more or less difficult to learn than English and your language, and why?</string>
+		</dict>
+	</dict>
+	<dict>
+		<key>Question_16</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Describe a well-paid job you would like to do in the future</string>
+			<key>Hint</key>
+			<string>What the job is?&amp;How you came to know about it?&amp;What kind of people can do this job?&amp;And explain why you like this job</string>
+		</dict>
+		<key>Question_15</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Describe a future plan which is not related to work or study.</string>
+			<key>Hint</key>
+			<string>what the plan is?&amp;when you thought of the plan?&amp;who is involved in the plan?&amp;and say how you think you will achieve the plan?</string>
+		</dict>
+		<key>Question_14</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Describe something you’ve always wanted to do but have not done yet</string>
+			<key>Hint</key>
+			<string>What it is about?&amp;Why you plan to do it?&amp;What is the easy part and difficult part of it?&amp;Why you have not done yet?</string>
+		</dict>
+		<key>Question_13</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about a sport you think is interesting but have never played. </string>
+			<key>Hint</key>
+			<string>What equipment is needed?&amp;What some of the rules are?&amp;What kinds of people this sport is popular with?&amp;And say if you think you will do this sport in the near future or not, and why?</string>
+		</dict>
+		<key>Question_12</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about a musical instrument you would like to be able to play but have never tried.</string>
+			<key>Hint</key>
+			<string>What the instrument looks like?&amp;How you play it?&amp;What kinds of music are played on it?&amp;And say if you think you will learn to play that instrument or not, and why?</string>
+		</dict>
+		<key>Question_11</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about your next trip abroad.</string>
+			<key>Hint</key>
+			<string>Where you are going or would like to go?&amp;What you want to do there?&amp;What souvenirs you would like to bring back?&amp;And say whether you think your next trip overseas will be as you would like it to be or not, and why?</string>
+		</dict>
+		<key>Question_10</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about another language you are interested in learning. </string>
+			<key>Hint</key>
+			<string>Where it is spoken?&amp;How it is different from your language and from English?&amp;Why you are interested in that language?&amp;And say if it is popular to learn that language in your country or not, and why?</string>
+		</dict>
+		<key>Question_9</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about something you would like to buy. </string>
+			<key>Hint</key>
+			<string>What it looks like?&amp;What it is used for?&amp;Why you want to buy it?&amp;And say if you think you will buy it or not, and why?</string>
+		</dict>
+		<key>Question_8</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about a new hobby you would like to take up.</string>
+			<key>Hint</key>
+			<string>What the advantages of the hobby are?&amp;What the difficulties of doing that hobby would be?&amp;How you first became interested in that hobby?&amp;And say if you think you will do that hobby in the near future or not, and why?</string>
+		</dict>
+		<key>Question_7</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about a subject you would like to study in the future. </string>
+			<key>Hint</key>
+			<string>What you need to study as part of that subject?&amp;Where you can study it?&amp;What you think the most difficult things about that subject would be?&amp;And say if you think studying that subject will be useful in your future life or not, and why?</string>
+		</dict>
+		<key>Question_6</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about a job you would like to do in the future. </string>
+			<key>Hint</key>
+			<string>What people have to do in that job?&amp;Why you are interested in that job?&amp;If there are any disadvantages or difficulties to doing that job?&amp;And say if you think you will be good at that job or not, and why?</string>
+		</dict>
+		<key>Question_5</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about your plans for your next long holiday. </string>
+			<key>Hint</key>
+			<string>Where you are thinking of going?&amp;Who you would like to go there with?&amp;What you would like to do there?&amp;And say if you think you will do what you are planning or not, and why?</string>
+		</dict>
+		<key>Question_4</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about a foreign country you have never been to and would like to visit</string>
+			<key>Hint</key>
+			<string>How that place is similar and different to your country and other countries you have visited?&amp;Why you are interested in going there?&amp;What you would like to do there?&amp;And say if you think you will go to that country in the near future or not, and why?</string>
+		</dict>
+		<key>Question_3</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about a goal or ambition you have.</string>
+			<key>Hint</key>
+			<string>When and why you first got that goal or ambition?&amp;What you need to do to make it come true?&amp;What your next step needs to be?&amp;And say if you think you will achieve that goal or ambition or not, and why?</string>
+		</dict>
+		<key>Question_2</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about one thing you are planning to do after you pass the IELTS test. </string>
+			<key>Hint</key>
+			<string>When you think you will do it?&amp;Why you want to do it?&amp;How long you have had that plan?&amp;And say whether there are any other options that you could also do which are just as good?</string>
+		</dict>
+		<key>Question_1</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Future plans</string>
+			<key>Question</key>
+			<string>Talk about one thing you are going to do next weekend. </string>
+			<key>Hint</key>
+			<string>Where you are going to do it?&amp;Who you are going to do it with?&amp;Any equipment you need to do it?&amp;And say whether you are looking forward to it or not, and why?</string>
+		</dict>
+	</dict>
+	<dict>
+		<key>Question_17</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Describe a trip you had by bike.</string>
+			<key>Hint</key>
+			<string>When and where you had the trip?&amp;Who you went with?&amp;Why you had the trip by bike?&amp;And explain how you felt about it.</string>
+		</dict>
+		<key>Question_16</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Describe a time you had good experience in the countryside.</string>
+			<key>Hint</key>
+			<string>where you went?&amp;what you did?&amp;when you did it?&amp;who you went with
+and explain why it was enjoyable.</string>
+		</dict>
+		<key>Question_15</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Describe a city you’ve visited that you like</string>
+			<key>Hint</key>
+			<string>Where is it?&amp;When did you go there?&amp;What did you do their?&amp;And explain why you like it?</string>
+		</dict>
+		<key>Question_14</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Describe the transport system in a place you know about. </string>
+			<key>Hint</key>
+			<string>What kind of transport is available?&amp;Which kinds most people use?&amp;What the good points and bad points of the transport system is?&amp;And say how the transport system in that place compares to other places you know about?</string>
+		</dict>
+		<key>Question_13</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about your plans for your next long vacation. </string>
+			<key>Hint</key>
+			<string>Where you want to go?&amp;Who you want to go there with?&amp;What you want to do when you get there?&amp;And say how likely you are to do what you have planned, and why?</string>
+		</dict>
+		<key>Question_12</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about your dream holiday.</string>
+			<key>Hint</key>
+			<string>Where you would like to go?&amp;What kind of accommodation you would like to stay in?&amp;What activities you would like to do?&amp;And say if you ever think you will go on a holiday like that or not, and why?</string>
+		</dict>
+		<key>Question_11</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about a part of your country you have never been to but would like to visit </string>
+			<key>Hint</key>
+			<string>Why you have never been there before?&amp;If or when you think you might go?&amp;Why you would like to go?&amp;And say how you first became interested in going to that place?</string>
+		</dict>
+		<key>Question_10</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about a foreign country you have never been to but would like to visit </string>
+			<key>Hint</key>
+			<string>Why you have never been there before?&amp;If or when you think you might go?&amp;Why you would like to go?&amp;And say how you first became interested in going to that place?</string>
+		</dict>
+		<key>Question_9</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about a hotel, bread and breakfast, campsite etc. you have stayed in on holiday.</string>
+			<key>Hint</key>
+			<string>Why you chose that place?&amp;How long you stayed there?&amp;What the good and bad things about it were?&amp;And say whether you would like to stay in the same place again, and why?</string>
+		</dict>
+		<key>Question_8</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about a day trip you have been on. </string>
+			<key>Hint</key>
+			<string>Where you went?&amp;How you travelled?&amp;Why you chose to go to that place?&amp;And say whether you would like to go back to the same place again or not, and why?</string>
+		</dict>
+		<key>Question_7</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about one means of transport that you often use. </string>
+			<key>Hint</key>
+			<string>Where you usually go by that means of transport?&amp;What the advantages of that method of travelling are?&amp;What the disadvantages are?&amp;And say if you think you will use that means of transport more or less often in the future, and why?</string>
+		</dict>
+		<key>Question_6</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about something tourists like to do in your town or country. </string>
+			<key>Hint</key>
+			<string>How well known it is?&amp;Why it is popular?&amp;What kinds of people like to do it?&amp;And say if you think it will become more popular or less popular in the future and why?</string>
+		</dict>
+		<key>Question_5</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about a foreign country you have been to or would like to go to on holiday. </string>
+			<key>Hint</key>
+			<string>Where that country is?&amp;Why it is a good place to go on holiday?&amp;What things there are to do there?&amp;And say whether you think you will go there or go there again in the near future or not, and why?</string>
+		</dict>
+		<key>Question_4</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Describe a journey you have been on. </string>
+			<key>Hint</key>
+			<string>Where you went?&amp;What kind or kinds of transport you used?&amp;How long the journey took?&amp;And say whether you think it was easy to take journey or not, and why?</string>
+		</dict>
+		<key>Question_3</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about somewhere you went on holiday. </string>
+			<key>Hint</key>
+			<string>How you got there?&amp;What activities you did there?&amp;Who you went with?&amp;And say if you would recommend that holiday to a friend or not, and why?</string>
+		</dict>
+		<key>Question_2</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about an activity you like doing when you are on holiday. </string>
+			<key>Hint</key>
+			<string>Where you usually do it?&amp;Who you do it with?&amp;Why you enjoy it?&amp;And say whether you also enjoyed doing that when you were a child or not, and why?</string>
+		</dict>
+		<key>Question_1</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Holidays and travel </string>
+			<key>Question</key>
+			<string>Talk about a thing you always take with you on holiday. </string>
+			<key>Hint</key>
+			<string>What it looks like?&amp;Why you need it?&amp;When you first started using it?&amp;And say if you think you could have a good holiday without it or not, and why?</string>
+		</dict>
+	</dict>
+	<dict>
+		<key>Question_11</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Talk about how you usually celebrate the New Year. </string>
+			<key>Hint</key>
+			<string>Where you usually go?&amp;Who you spend your time with?&amp;What you eat and drink?&amp;And say if you think New Year is one of the most important festivals in your country and why?</string>
+		</dict>
+		<key>Question_10</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Talk about the next festival or celebration in your family or your country. </string>
+			<key>Hint</key>
+			<string>If it is a big celebration?&amp;What it being celebrated?&amp;What people will do on that day?&amp;And say if you think you will enjoy that day or not, and why?</string>
+		</dict>
+		<key>Question_9</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Talk about the last time your whole family got together. </string>
+			<key>Hint</key>
+			<string>Why you got together?&amp;What you did together?&amp;If everyone enjoyed themselves?&amp;And say if your family often get together and why?</string>
+		</dict>
+		<key>Question_8</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Talk about your favourite day of the year </string>
+			<key>Hint</key>
+			<string>When it is?&amp;Why you like it?&amp;What you usually do?&amp;And say how it compares to other special days of the year?</string>
+		</dict>
+		<key>Question_7</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Talk about a birthday you can remember well. </string>
+			<key>Hint</key>
+			<string>How you celebrated?&amp;Who you were with?&amp;Why you remember that day?&amp;And say how it was different from other birthdays you have had before or since?</string>
+		</dict>
+		<key>Question_6</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Describe a party that you attended </string>
+			<key>Hint</key>
+			<string>Who invited you?&amp;Where you were invited?&amp;What the party was celebrating?&amp;And say if took anything with you to the party or not, and why?</string>
+		</dict>
+		<key>Question_5</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Describe a traditional festival or celebration in your country. </string>
+			<key>Hint</key>
+			<string>What is being celebrated?&amp;What people do?&amp;How long people have been celebrating this way?&amp;And say if you think this festival or celebration will change in the future or not, and why?</string>
+		</dict>
+		<key>Question_4</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Describe your favourite festival or celebration </string>
+			<key>Hint</key>
+			<string>What time of year it is?&amp;Why you like it?&amp;What you usually do?&amp;And say how that festival or celebration compares to others in your country or abroad?</string>
+		</dict>
+		<key>Question_3</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Describe a typical festival or celebration in your country </string>
+			<key>Hint</key>
+			<string>When it usually happens?&amp;What it is celebrating?&amp;What people do?&amp;And say if that is your favourite celebration or not, and why?</string>
+		</dict>
+		<key>Question_2</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Describe a present that you gave someone </string>
+			<key>Hint</key>
+			<string>Who you gave it to?&amp;Why you decided to give them a present?&amp;Why you chose that present?&amp;And say how that present compares to other presents you have given that person or other people?</string>
+		</dict>
+		<key>Question_1</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>Festivals and celebrations </string>
+			<key>Question</key>
+			<string>Describe a present that you someone gave you </string>
+			<key>Hint</key>
+			<string>Who you got it from?&amp;Why they gave it to you?&amp;If that present has been useful to you?&amp;And say what kind of person you would give a similar present to?</string>
+		</dict>
+	</dict>
+	<dict>
+		<key>Question_11</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe an important plant in your country.</string>
+			<key>Hint</key>
+			<string>What the plant is?&amp;How you know it?&amp;Why it is important?&amp;And explain how much you like the plant.</string>
+		</dict>
+		<key>Question_10</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe a shop in your hometown or the placed you are living now. </string>
+			<key>Hint</key>
+			<string>Where it is?&amp;What it sells?&amp;What the advantages of shopping there are?&amp;And say whether you often go shopping there or not, and why?</string>
+		</dict>
+		<key>Question_9</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe a park in your hometown or near where you are living. </string>
+			<key>Hint</key>
+			<string>Where it is?&amp;What it looks like?&amp;What people usually do there?&amp;And say if you often go to the park or not, and why?</string>
+		</dict>
+		<key>Question_8</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe the place you were born in or grew up in. </string>
+			<key>Hint</key>
+			<string>What kind of place it is?&amp;Where it is?&amp;What things there are to do there?&amp;And say if that is the place you would most like to be living in now or not, and why?</string>
+		</dict>
+		<key>Question_7</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe a shopping street in your hometown </string>
+			<key>Hint</key>
+			<string>What things you can buy there?&amp;What the most popular shops are?&amp;Any changes there have been over the years?&amp;And say if you think shopping there will become more or less popular in the future, and why?</string>
+		</dict>
+		<key>Question_6</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe the transport system in your hometown or the place you are living now. </string>
+			<key>Hint</key>
+			<string>What kind of transport there is?&amp;Which kind of transport most people use?&amp;What the good points and bad points of the transport system is?&amp;And say if you think most people are happy with the transport system or not, and why?</string>
+		</dict>
+		<key>Question_5</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe some countryside near your hometown or the place where you are living now.</string>
+			<key>Hint</key>
+			<string>What it looks like?&amp;What people usually do there?&amp;How you can get there from your home?&amp;And say whether you often go to the place or not, and why?</string>
+		</dict>
+		<key>Question_4</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe something famous in your hometown or local area.</string>
+			<key>Hint</key>
+			<string>What it is?&amp;Why it is famous?&amp;How well known it is?&amp;And say if that thing makes you feel proud of your hometown or local area or not, and why?</string>
+		</dict>
+		<key>Question_3</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe a landmark in your hometown or the place you are living now </string>
+			<key>Hint</key>
+			<string>What it looks like?&amp;Why it is a landmark?&amp;What it is used for?&amp;And say if it is popular with the local people and tourists or not, and why?</string>
+		</dict>
+		<key>Question_2</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe a famous food from your hometown or country. </string>
+			<key>Hint</key>
+			<string>What it looks like?&amp;What it tastes like?&amp;When and how it is usually eaten?&amp;And say why you think it is famous?</string>
+		</dict>
+		<key>Question_1</key>
+		<dict>
+			<key>QusTopic</key>
+			<string>About Your Hometown </string>
+			<key>Question</key>
+			<string>Describe a city, town or village you know well </string>
+			<key>Hint</key>
+			<string>Where it is?&amp;What it looks like?&amp;What kind of people live there?&amp;And say if you think it is a good place to live or not, and why?</string>
 		</dict>
 	</dict>
 	<dict>
 		<key>Question_9</key>
 		<dict>
 			<key>QusTopic</key>
-			<string>House, home and accommodation </string>
+			<string>Home and accommodation</string>
 			<key>Question</key>
 			<string>Describe a quiet place</string>
 			<key>Hint</key>
@@ -26,7 +575,7 @@
 		<key>Question_8</key>
 		<dict>
 			<key>QusTopic</key>
-			<string>House, home and accommodation </string>
+			<string>Home and accommodation</string>
 			<key>Question</key>
 			<string>Describe a time you moved to a new home or school</string>
 			<key>Hint</key>
@@ -35,7 +584,7 @@
 		<key>Question_7</key>
 		<dict>
 			<key>QusTopic</key>
-			<string>House, home and accommodation </string>
+			<string>Home and accommodation</string>
 			<key>Question</key>
 			<string>Talk about the place where one of your friends or relations lives. </string>
 			<key>Hint</key>
@@ -44,7 +593,7 @@
 		<key>Question_6</key>
 		<dict>
 			<key>QusTopic</key>
-			<string>House, home and accommodation </string>
+			<string>Home and accommodation</string>
 			<key>Question</key>
 			<string>Describe a house or flat that you know well but have never lived in. </string>
 			<key>Hint</key>
@@ -53,7 +602,7 @@
 		<key>Question_5</key>
 		<dict>
 			<key>QusTopic</key>
-			<string>House, home and accommodation </string>
+			<string>Home and accommodation</string>
 			<key>Question</key>
 			<string>Describe the first place you remember living</string>
 			<key>Hint</key>
@@ -62,7 +611,7 @@
 		<key>Question_4</key>
 		<dict>
 			<key>QusTopic</key>
-			<string>House, home and accommodation </string>
+			<string>Home and accommodation</string>
 			<key>Question</key>
 			<string>Describe your dream home</string>
 			<key>Hint</key>
@@ -71,7 +620,7 @@
 		<key>Question_3</key>
 		<dict>
 			<key>QusTopic</key>
-			<string>House, home and accommodation </string>
+			<string>Home and accommodation</string>
 			<key>Question</key>
 			<string>Describe your neighbourhood</string>
 			<key>Hint</key>
@@ -80,7 +629,7 @@
 		<key>Question_2</key>
 		<dict>
 			<key>QusTopic</key>
-			<string>House, home and accommodation </string>
+			<string>Home and accommodation</string>
 			<key>Question</key>
 			<string>Describe a place you have lived in or are living now </string>
 			<key>Hint</key>
@@ -89,7 +638,7 @@
 		<key>Question_1</key>
 		<dict>
 			<key>QusTopic</key>
-			<string>House, home and accommodation </string>
+			<string>Home and accommodation</string>
 			<key>Question</key>
 			<string>Describe your favourite room in the place you are living now </string>
 			<key>Hint</key>
@@ -97,15 +646,6 @@
 		</dict>
 	</dict>
 	<dict>
-		<key>Question_20</key>
-		<dict>
-			<key>Hint</key>
-			<string>What the change was?&amp;When and where this change happened?&amp;What caused this change?&amp;And explain how you benefited from this change.</string>
-			<key>Question</key>
-			<string>Describe a recent change of you</string>
-			<key>QusTopic</key>
-			<string>Work and Studies</string>
-		</dict>
 		<key>Question_19</key>
 		<dict>
 			<key>Hint</key>
@@ -199,9 +739,9 @@
 		<key>Question_9</key>
 		<dict>
 			<key>Hint</key>
-			<string>What the reason for doing that project was?&amp;How successful the project was?&amp;How long it took you?&amp;And say if you enjoyed working on that project or not, and why?</string>
+			<string>What the change was?&amp;When and where this change happened?&amp;What caused this change?&amp;And explain how you benefited from this change.</string>
 			<key>Question</key>
-			<string>Describe a project you had to do on your own or with others as part of your studies or job</string>
+			<string>Describe a recent change of you</string>
 			<key>QusTopic</key>
 			<string>Work and Studies</string>
 		</dict>

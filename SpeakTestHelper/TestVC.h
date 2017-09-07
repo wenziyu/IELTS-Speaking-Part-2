@@ -21,18 +21,24 @@
 - (IBAction)againButtonPressed:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *startRecordBtn;
-@property (weak, nonatomic) IBOutlet UIButton *playVoiceBtn;
-@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UIProgressView *audioProgressBar;
-@property (weak, nonatomic) IBOutlet UIButton *againBtn;
+
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *countLabelTwo;
+
 @property (weak, nonatomic) IBOutlet UIView *playContentView;
-@property (weak, nonatomic) IBOutlet UILabel *setTime;
+@property (weak, nonatomic) IBOutlet UIButton *playVoiceBtn;
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+@property (weak, nonatomic) IBOutlet UIButton *againBtn;
+
 @property (weak, nonatomic) IBOutlet UIView *countContentView;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *setTime;
+@property (weak, nonatomic) IBOutlet UIImageView *lightImageView;
+
+
 @property (weak, nonatomic) IBOutlet UISlider *progressSlider;
+@property (weak, nonatomic) IBOutlet UIProgressView *audioProgressBar;
 
 
 
