@@ -107,7 +107,11 @@
     }
     
     // 一分鐘倒數的timer
-    [self oneMinTimerCount];
+    //[self oneMinTimerCount];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 repeats:false block:^(NSTimer * _Nonnull timer) {
+        [self oneMinTimerCount];
+    }];
 
 }
 
@@ -383,10 +387,10 @@
 -(void)navigationBackBtnTap{
     // 確保使用者不是忘了按存檔，可能會添加設定按鈕讓他選擇要不要跳提醒
     if (self.started == true && self.save == false && self.again == true){
-        [self alertSetMessage:@"是否儲存剛剛的測驗" settitle:@"即將離開"];
+        [self alertSetMessage:@"" settitle:@"leave or save"];
     }
     if (self.nevercome == true && self.started == true && self.save == false){
-        [self alertSetMessage:@"是否儲存剛剛的測驗" settitle:@"即將離開"];
+        [self alertSetMessage:@"" settitle:@"leave or save"];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -407,7 +411,7 @@
 }
 - (void)alertSetMessage:(NSString *)message settitle:(NSString *)title{
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction * save = [UIAlertAction actionWithTitle:@"save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction * save = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         NSString * recordFilePath = [NSString stringWithFormat:@"/Documents/%frecord.caf",self.time];
         Testdata * testItem = [tabrVC.dataManager createItem];
@@ -424,7 +428,7 @@
         }];
     }];
     
-    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"Leave" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
         NSString * recordFilePath = [NSString stringWithFormat:@"%frecord.caf",self.time];
         [self deleteVoiceFile:recordFilePath];
