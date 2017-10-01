@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30A7962E2FA1AF3ACC93B01B /* libPods-SpeakTestHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBC98BC0FEE4B038E45F360 /* libPods-SpeakTestHelper.a */; };
+		9B2883DC1F7D25E300B44C63 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B2883DB1F7D25E300B44C63 /* GoogleService-Info.plist */; };
 		9BB96FFB1F56E2FC009B84E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB96FFA1F56E2FC009B84E5 /* main.m */; };
 		9BB96FFE1F56E2FC009B84E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB96FFD1F56E2FC009B84E5 /* AppDelegate.m */; };
 		9BB970011F56E2FC009B84E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB970001F56E2FC009B84E5 /* ViewController.m */; };
@@ -28,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E30D13A9207AC6330AFC0E5 /* Pods-SpeakTestHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakTestHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpeakTestHelper/Pods-SpeakTestHelper.release.xcconfig"; sourceTree = "<group>"; };
+		4973AFD12963967CC20DA437 /* Pods-SpeakTestHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakTestHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpeakTestHelper/Pods-SpeakTestHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		9B2883DB1F7D25E300B44C63 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9BB96FF61F56E2FC009B84E5 /* SpeakTestHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakTestHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB96FFA1F56E2FC009B84E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9BB96FFC1F56E2FC009B84E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,6 +63,7 @@
 		9BB9705F1F5DC8FC009B84E5 /* ExpandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandCell.h; sourceTree = "<group>"; };
 		9BB970601F5DC8FC009B84E5 /* ExpandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpandCell.m; sourceTree = "<group>"; };
 		9BB970611F5DC8FC009B84E5 /* ExpandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandCell.xib; sourceTree = "<group>"; };
+		DEBC98BC0FEE4B038E45F360 /* libPods-SpeakTestHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpeakTestHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB970381F599999009B84E5 /* AVFoundation.framework in Frameworks */,
+				30A7962E2FA1AF3ACC93B01B /* libPods-SpeakTestHelper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,7 @@
 				9BB96FF81F56E2FC009B84E5 /* SpeakTestHelper */,
 				9BB96FF71F56E2FC009B84E5 /* Products */,
 				9BB970361F599999009B84E5 /* Frameworks */,
+				EFEE22B685CFC933A67A9A67 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +110,7 @@
 				9BB970071F56E2FC009B84E5 /* LaunchScreen.storyboard */,
 				9BB9700A1F56E2FC009B84E5 /* Info.plist */,
 				9BB970121F56E3F9009B84E5 /* SpeakingTopic.plist */,
+				9B2883DB1F7D25E300B44C63 /* GoogleService-Info.plist */,
 				9BB970391F5AB0B2009B84E5 /* TestData.xcdatamodeld */,
 				9BB96FF91F56E2FC009B84E5 /* Supporting Files */,
 			);
@@ -149,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				9BB970371F599999009B84E5 /* AVFoundation.framework */,
+				DEBC98BC0FEE4B038E45F360 /* libPods-SpeakTestHelper.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -164,6 +174,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		EFEE22B685CFC933A67A9A67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4973AFD12963967CC20DA437 /* Pods-SpeakTestHelper.debug.xcconfig */,
+				0E30D13A9207AC6330AFC0E5 /* Pods-SpeakTestHelper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,9 +190,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9BB9700D1F56E2FC009B84E5 /* Build configuration list for PBXNativeTarget "SpeakTestHelper" */;
 			buildPhases = (
+				F5AD0B862966A823C2C237BD /* [CP] Check Pods Manifest.lock */,
 				9BB96FF21F56E2FC009B84E5 /* Sources */,
 				9BB96FF31F56E2FC009B84E5 /* Frameworks */,
 				9BB96FF41F56E2FC009B84E5 /* Resources */,
+				F2BA26A8184095D2E7A3E94E /* [CP] Embed Pods Frameworks */,
+				8B30EC9752F4E4B1D5CEBAA8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -228,10 +250,59 @@
 				9BB970631F5DC8FC009B84E5 /* ExpandCell.xib in Resources */,
 				9BB970131F56E3F9009B84E5 /* SpeakingTopic.plist in Resources */,
 				9BB970041F56E2FC009B84E5 /* Main.storyboard in Resources */,
+				9B2883DC1F7D25E300B44C63 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B30EC9752F4E4B1D5CEBAA8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpeakTestHelper/Pods-SpeakTestHelper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2BA26A8184095D2E7A3E94E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpeakTestHelper/Pods-SpeakTestHelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5AD0B862966A823C2C237BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9BB96FF21F56E2FC009B84E5 /* Sources */ = {
@@ -369,6 +440,7 @@
 		};
 		9BB9700E1F56E2FC009B84E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4973AFD12963967CC20DA437 /* Pods-SpeakTestHelper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = G5G94ZY4FA;
@@ -383,6 +455,7 @@
 		};
 		9BB9700F1F56E2FC009B84E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E30D13A9207AC6330AFC0E5 /* Pods-SpeakTestHelper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = G5G94ZY4FA;

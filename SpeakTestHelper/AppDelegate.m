@@ -8,9 +8,12 @@
 
 #import "AppDelegate.h"
 
+
 @interface AppDelegate ()
 
 @end
+@import UIKit;
+@import Firebase;
 
 @implementation AppDelegate
 
@@ -21,6 +24,14 @@
     [[UITabBar appearance] setBackgroundImage:tabBarBackground];
 
     [[UINavigationBar appearance]setBackgroundImage:tabBarBackground forBarMetrics:UIBarMetricsDefault];
+    [FIRApp configure];
+    
+    [FIRAnalytics logEventWithName:@"edit_story"
+                        parameters:@{
+                                     @"username": @"finalevil",
+                                     @"gender": @"1"
+                                     }];
+
 
     return YES;
 }
