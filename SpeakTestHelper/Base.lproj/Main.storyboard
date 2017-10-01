@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HUG-fs-ylM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HUG-fs-ylM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -319,6 +318,7 @@
                     <connections>
                         <segue destination="ara-vr-qnc" kind="relationship" relationship="viewControllers" id="RdO-Nz-DWt"/>
                         <segue destination="Cw4-9c-Mni" kind="relationship" relationship="viewControllers" id="pTE-TV-eRU"/>
+                        <segue destination="nH9-a2-5lB" kind="relationship" relationship="viewControllers" id="D4P-bS-ndZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddb-y6-bO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -573,17 +573,63 @@
             </objects>
             <point key="canvasLocation" x="184.80000000000001" y="1180.6596701649175"/>
         </scene>
+        <!--Share View Controller-->
+        <scene sceneID="5hU-Kj-mqC">
+            <objects>
+                <viewController id="nH9-a2-5lB" customClass="ShareViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ffD-Pb-AT2"/>
+                        <viewControllerLayoutGuide type="bottom" id="IU4-gq-ahh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m1n-fD-I9I">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDf-ZV-Wsz">
+                                <rect key="frame" x="62.5" y="203.5" width="250" height="60"/>
+                                <state key="normal" image="contact"/>
+                                <connections>
+                                    <action selector="contactMePressed:" destination="nH9-a2-5lB" eventType="touchUpInside" id="PPu-lt-5jU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXo-1o-OzE">
+                                <rect key="frame" x="62.5" y="303.5" width="250" height="60"/>
+                                <state key="normal" image="share"/>
+                                <connections>
+                                    <action selector="sharePressed:" destination="nH9-a2-5lB" eventType="touchUpInside" id="xtk-Q6-tqd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sDf-ZV-Wsz" firstAttribute="centerY" secondItem="m1n-fD-I9I" secondAttribute="centerY" multiplier="0.7" id="FMl-Eq-dgT"/>
+                            <constraint firstItem="SXo-1o-OzE" firstAttribute="centerX" secondItem="m1n-fD-I9I" secondAttribute="centerX" id="GLn-jU-jgv"/>
+                            <constraint firstItem="sDf-ZV-Wsz" firstAttribute="centerX" secondItem="m1n-fD-I9I" secondAttribute="centerX" id="maY-l2-gKk"/>
+                            <constraint firstItem="SXo-1o-OzE" firstAttribute="centerY" secondItem="m1n-fD-I9I" secondAttribute="centerY" id="qCV-NC-4bt"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" image="more" id="y99-dJ-VOM">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dsN-49-5SW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-670" y="1172"/>
+        </scene>
     </scenes>
     <resources>
         <image name="again" width="40" height="64"/>
         <image name="bigPlay" width="118" height="119"/>
+        <image name="contact" width="250" height="60"/>
         <image name="like" width="24" height="22"/>
         <image name="list" width="25" height="20"/>
         <image name="micro" width="25" height="27"/>
+        <image name="more" width="30" height="8"/>
         <image name="noSave" width="40" height="64"/>
         <image name="play" width="40" height="64"/>
         <image name="random" width="189" height="60"/>
         <image name="select" width="189" height="60"/>
+        <image name="share" width="250" height="60"/>
         <image name="startRecord" width="120" height="120"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

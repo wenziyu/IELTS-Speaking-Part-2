@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		30A7962E2FA1AF3ACC93B01B /* libPods-SpeakTestHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBC98BC0FEE4B038E45F360 /* libPods-SpeakTestHelper.a */; };
 		9B2883DC1F7D25E300B44C63 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B2883DB1F7D25E300B44C63 /* GoogleService-Info.plist */; };
+		9B2883E41F80FD2A00B44C63 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2883E31F80FD2A00B44C63 /* ShareViewController.m */; };
+		9B2883E61F80FD7100B44C63 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2883E51F80FD7100B44C63 /* MessageUI.framework */; };
 		9BB96FFB1F56E2FC009B84E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB96FFA1F56E2FC009B84E5 /* main.m */; };
 		9BB96FFE1F56E2FC009B84E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB96FFD1F56E2FC009B84E5 /* AppDelegate.m */; };
 		9BB970011F56E2FC009B84E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB970001F56E2FC009B84E5 /* ViewController.m */; };
@@ -33,6 +35,9 @@
 		0E30D13A9207AC6330AFC0E5 /* Pods-SpeakTestHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakTestHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpeakTestHelper/Pods-SpeakTestHelper.release.xcconfig"; sourceTree = "<group>"; };
 		4973AFD12963967CC20DA437 /* Pods-SpeakTestHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakTestHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpeakTestHelper/Pods-SpeakTestHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		9B2883DB1F7D25E300B44C63 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9B2883E21F80FD2A00B44C63 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		9B2883E31F80FD2A00B44C63 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		9B2883E51F80FD7100B44C63 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9BB96FF61F56E2FC009B84E5 /* SpeakTestHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakTestHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB96FFA1F56E2FC009B84E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9BB96FFC1F56E2FC009B84E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B2883E61F80FD7100B44C63 /* MessageUI.framework in Frameworks */,
 				9BB970381F599999009B84E5 /* AVFoundation.framework in Frameworks */,
 				30A7962E2FA1AF3ACC93B01B /* libPods-SpeakTestHelper.a in Frameworks */,
 			);
@@ -150,6 +156,8 @@
 				9BB9703D1F5ACCC0009B84E5 /* CollectionVC.m */,
 				9BB970481F5AE4F6009B84E5 /* CollectionDetailVC.h */,
 				9BB970491F5AE4F6009B84E5 /* CollectionDetailVC.m */,
+				9B2883E21F80FD2A00B44C63 /* ShareViewController.h */,
+				9B2883E31F80FD2A00B44C63 /* ShareViewController.m */,
 			);
 			name = Controll;
 			sourceTree = "<group>";
@@ -157,6 +165,7 @@
 		9BB970361F599999009B84E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9B2883E51F80FD7100B44C63 /* MessageUI.framework */,
 				9BB970371F599999009B84E5 /* AVFoundation.framework */,
 				DEBC98BC0FEE4B038E45F360 /* libPods-SpeakTestHelper.a */,
 			);
@@ -319,6 +328,7 @@
 				9BB970471F5AD246009B84E5 /* CollectionCell.m in Sources */,
 				9BB96FFB1F56E2FC009B84E5 /* main.m in Sources */,
 				9BB970441F5ACEEA009B84E5 /* TabBarVC.m in Sources */,
+				9B2883E41F80FD2A00B44C63 /* ShareViewController.m in Sources */,
 				9BB970621F5DC8FC009B84E5 /* ExpandCell.m in Sources */,
 				9BB9703B1F5AB0B2009B84E5 /* TestData.xcdatamodeld in Sources */,
 			);
